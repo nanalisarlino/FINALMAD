@@ -22,7 +22,7 @@ const Entrance: React.FC = () => {
       
       {/* Gradient Image (Bottom 30%) */}
       <Image
-        source={require('../../assets/gradient.png')}
+        source={require('../../assets/bottom.png')}
         style={styles.gradientImage}
       />
       

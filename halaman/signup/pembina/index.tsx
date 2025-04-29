@@ -29,7 +29,7 @@ const PembinaSignUp: React.FC = () => {
 
   return (
     <ImageBackground
-    source={require('../../../assets/images/bg-auth.png')} // Ganti path sesuai lokasi file
+    source={require('../../../assets/images/background.png')}
     style={styles.imageBackground}
     >
     <View style={styles.container}>

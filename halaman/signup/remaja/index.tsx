@@ -24,7 +24,6 @@ const RemajaSignUp: React.FC = () => {
       nomorHP,
       password,
     });
-    // Save logic here
   };
 
   const handleBack = () => {
@@ -34,7 +33,7 @@ const RemajaSignUp: React.FC = () => {
 
   return (
         <ImageBackground
-        source={require('../../../assets/images/bg-auth.png')} // Ganti path sesuai lokasi file
+        source={require('../../../assets/images/background.png')}
         style={styles.imageBackground}
         >
     <View style={styles.container}>
