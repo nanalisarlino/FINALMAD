@@ -16,13 +16,13 @@ const Entrance: React.FC = () => {
     <View style={styles.container}>
       {/* Background Image (Top 70%) */}
       <Image
-        source={require('../../assets/background.jpg')}
+        source={require('../../assets/gambar/background.jpg')}
         style={styles.backgroundImage}
       />
       
       {/* Gradient Image (Bottom 30%) */}
       <Image
-        source={require('../../assets/bottom.png')}
+        source={require('../../assets/gambar/bottom.png')}
         style={styles.gradientImage}
       />
       
@@ -40,7 +40,7 @@ const Entrance: React.FC = () => {
             <Button title="Daftar" onPress={handleDaftar} />
           </View>
         </View>
-        <Image source={require('../../assets/logo.png')} style={styles.logo}/>
+        <Image source={require('../../assets/gambar/logo.png')} style={styles.logo}/>
       </View>
 
       {/* Footer */}

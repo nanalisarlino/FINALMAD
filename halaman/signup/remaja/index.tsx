@@ -33,7 +33,7 @@ const RemajaSignUp: React.FC = () => {
 
   return (
         <ImageBackground
-        source={require('../../../assets/images/background.png')}
+        source={require('../../../assets/gambar/background.png')}
         style={styles.imageBackground}
         >
     <View style={styles.container}>
