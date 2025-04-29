@@ -1,7 +1,14 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import { View, StyleSheet, Text, Image } from 'react-native';
 
-const Atasan = ({label, top = -400, left = -134}) => {
+interface AtasanProps {
+  label: string;
+  subtitle?: string;
+  top?: number;
+  left?: number;
+}
+
+const Atasan: React.FC<AtasanProps> = ({ label, subtitle, top = -400, left = -134 }) => {
   return (
     <View>
       <Image
@@ -12,7 +19,10 @@ const Atasan = ({label, top = -400, left = -134}) => {
         source={require('../../../assets/gambar/Rectangle11.png')}
         style={styles.image}
       />
-      <Text style={[styles.judul, {top}, {left}]}>{label}</Text>
+      <Text style={[styles.judul, { top, left }]}>{label}</Text>
+      {subtitle && (
+        <Text style={[styles.subtitle, { top: top + 28, left }]}>{subtitle}</Text>
+      )}
     </View>
   );
 };
@@ -22,9 +32,13 @@ export default Atasan;
 const styles = StyleSheet.create({
   judul: {
     position: 'absolute',
-    left: -134,
-    top: -400,
     fontSize: 24,
+    color: '#2D3250',
+    fontFamily: 'SedanSC-Regular',
+  },
+  subtitle: {
+    position: 'absolute',
+    fontSize: 16,
     color: '#2D3250',
     fontFamily: 'SedanSC-Regular',
   },
