@@ -1,32 +1,43 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Image} from 'react-native';
 
-const Header = () => {
+const Atasan = ({label, top = -400, left = -134}) => {
   return (
-    <View style={styles.wrapper}>
-      <Text style={styles.judul}> Remaja Baitel Kema</Text>
+    <View>
+      <Image
+        source={require('../../../assets/ikon/Panahkembali.png')}
+        style={styles.image0}
+      />
+      <Image
+        source={require('../../../assets/gambar/Rectangle11.png')}
+        style={styles.image}
+      />
+      <Text style={[styles.judul, {top}, {left}]}>{label}</Text>
     </View>
   );
 };
 
-export default Header;
+export default Atasan;
 
 const styles = StyleSheet.create({
-  wrapper: {
-    width: 414,
-    height: 381,
-    left: 0,
-    top: -271,
-    borderRadius: 40,
-    position: 'absolute',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-  },
   judul: {
     position: 'absolute',
-    left: 95,
-    top: 333,
+    left: -134,
+    top: -400,
     fontSize: 24,
     color: '#2D3250',
     fontFamily: 'SedanSC-Regular',
+  },
+  image0: {
+    position: 'absolute',
+    width: 40,
+    height: 40,
+    top: -430,
+    left: -190,
+  },
+  image: {
+    position: 'absolute',
+    top: -460,
+    left: -205,
   },
 });
