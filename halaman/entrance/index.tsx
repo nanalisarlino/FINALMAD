@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { Button } from '../../komponen/atom';
-import { Bawahan } from '../../komponen/molekul';
+import {View, Text, StyleSheet, Image} from 'react-native';
+import {Button} from '../../komponen/atom';
+import {Bawahan} from '../../komponen/molekul';
 
 const Entrance: React.FC = () => {
   const handleMasuk = () => {
@@ -16,16 +16,16 @@ const Entrance: React.FC = () => {
     <View style={styles.container}>
       {/* Background Image (Top 70%) */}
       <Image
-        source={require('../../assets/background.jpg')}
+        source={require('../../assets/gambar/background.jpg')}
         style={styles.backgroundImage}
       />
-      
+
       {/* Gradient Image (Bottom 30%) */}
       <Image
-        source={require('../../assets/bottom.png')}
+        source={require('../../assets/gambar/bottom.png')}
         style={styles.gradientImage}
       />
-      
+
       {/* Title Overlay */}
       <View style={styles.overlayContent}>
         <Text style={styles.title}>Sistem Absensi RGK</Text>
@@ -40,7 +40,7 @@ const Entrance: React.FC = () => {
             <Button title="Daftar" onPress={handleDaftar} />
           </View>
         </View>
-        <Image source={require('../../assets/logo.png')} style={styles.logo}/>
+        <Image source={require('../../assets/logo.png')} style={styles.logo} />
       </View>
 
       {/* Footer */}
@@ -114,5 +114,5 @@ const styles = StyleSheet.create({
     top: -23,
     left: -671,
     resizeMode: 'contain',
-  },  
+  },
 });
