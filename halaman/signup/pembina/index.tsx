@@ -38,7 +38,7 @@ const PembinaSignUp: React.FC = () => {
     source={require('../../../assets/gambar/background.png')}
     style={styles.imageBackground}
     >
-    <View style={styles.container}>
+      <View style={styles.container}>
       {/* Back Button */}
       <TouchableOpacity onPress={handleBack} style={styles.backButton}>
         <Text style={styles.backText}>←</Text>
