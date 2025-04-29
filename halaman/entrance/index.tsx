@@ -40,7 +40,10 @@ const Entrance: React.FC = () => {
             <Button title="Daftar" onPress={handleDaftar} />
           </View>
         </View>
-        <Image source={require('../../assets/logo.png')} style={styles.logo} />
+        <Image
+          source={require('../../assets/gambar/logo.png')}
+          style={styles.logo}
+        />
       </View>
 
       {/* Footer */}

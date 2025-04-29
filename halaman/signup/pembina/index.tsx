@@ -35,12 +35,62 @@ const PembinaSignUp: React.FC = () => {
 
   return (
     <ImageBackground
-      source={require('../../../assets/gambar/background.png')}
-      style={styles.imageBackground}>
-      <View style={styles.container}>
-        {/* Back Button */}
-        <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-          <Text style={styles.backText}>←</Text>
+    source={require('../../../assets/gambar/background.png')}
+    style={styles.imageBackground}
+    >
+    <View style={styles.container}>
+      {/* Back Button */}
+      <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+        <Text style={styles.backText}>←</Text>
+      </TouchableOpacity>
+
+      {/* Header */}
+      <Atasan label="DAFTAR" subtitle="Pembina" />
+
+      <View style={styles.formContainer}>
+        <InputText 
+        label="Nama" 
+        value={nama} 
+        onChangeText={setNama} 
+        placeholder="Masukkan nama lengkap" 
+        />
+        <InputText 
+        label="Tanggal Lahir" 
+        value={tanggalLahir} 
+        onChangeText={setTanggalLahir} 
+        placeholder="Masukkan tanggal lahir" />
+        <InputText 
+        label="Kolom" 
+        value={kolom} 
+        onChangeText={setKolom} 
+        placeholder="Masukkan kolom" 
+        />
+        <InputText
+          label="Alamat"
+          value={alamat}
+          onChangeText={setAlamat}
+          placeholder="Masukkan alamat rumah"
+          multiline
+        />
+        <InputText
+          label="Nomor HP (WhatsApp)"
+          value={nomorHP}
+          onChangeText={setNomorHP}
+          placeholder="Masukkan nomor HP"
+          keyboardType="phone-pad"
+        />
+        <InputText
+          label="Password"
+          value={password}
+          onChangeText={setPassword}
+          placeholder="Masukkan password"
+          secureTextEntry
+        />
+        <Button title="Daftar" onPress={handleDaftar} />
+
+        {/* Link to Sign In */}
+        <TouchableOpacity onPress={() => console.log('Navigate to Sign In')}>
+          <Text style={styles.loginText}>Masuk</Text>
         </TouchableOpacity>
 
         {/* Header */}
