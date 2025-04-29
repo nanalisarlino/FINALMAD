@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Button } from '../../../komponen/atom';
-import { Bawahan } from '../../../komponen/molekul';
-import { useNavigation } from '@react-navigation/native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {Button} from '../../../komponen/atom';
+import {Bawahan} from '../../../komponen/molekul';
+import {useNavigation} from '@react-navigation/native';
 
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
@@ -25,7 +25,7 @@ const SignUp: React.FC = () => {
     <View style={styles.container}>
       {/* Background Image */}
       <Image
-        source={require('../../assets/background.jpg')}
+        source={require('../../assets/gambar/background.jpg')}
         style={styles.backgroundImage}
       />
 

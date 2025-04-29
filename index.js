@@ -11,4 +11,4 @@ import Entrance from './halaman/entrance';
 import SignIn from './halaman/signin';
 import {SignUp, PembinaSignUp, RemajaSignUp} from './halaman/signup';
 
-AppRegistry.registerComponent(appName, () => SignUp);
+AppRegistry.registerComponent(appName, () => Entrance);
