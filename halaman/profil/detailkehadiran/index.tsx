@@ -18,11 +18,11 @@ const LihatDetail = () => {
         />
         <TeksBiasa label={'Hadir: 17'} top={90} left={127} />
         <TeksBiasa label={'13 April'} top={160} left={127} />
-        <Garis />
-        <TeksBiasa label={'6 April'} top={0} left={127} />
-        <Garis />
-        <TeksBiasa label={'30 Maret'} top={0} left={127} />
-        <Garis />
+        <Garis top={195} height={2} left={60} width={200} />
+        <TeksBiasa label={'6 April'} top={201} left={127} />
+        <Garis top={235} height={2} left={60} width={200} />
+        <TeksBiasa label={'30 Maret'} top={241} left={127} />
+        <Garis top={275} height={2} left={60} width={200} />
       </View>
       <Bawahan />
     </View>

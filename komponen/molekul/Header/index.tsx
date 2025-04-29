@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, StyleSheet, Text, Image} from 'react-native';
 
-const Atasan = ({label, top = -400, left = -134}) => {
+const Atasan = ({label, top = 14, left = 0}) => {
   return (
-    <View>
+    <View style={(styles.container, {top}, {left})}>
       <Image
         source={require('../../../assets/ikon/Panahkembali.png')}
         style={styles.image0}
@@ -12,7 +12,7 @@ const Atasan = ({label, top = -400, left = -134}) => {
         source={require('../../../assets/gambar/Rectangle11.png')}
         style={styles.image}
       />
-      <Text style={[styles.judul, {top}, {left}]}>{label}</Text>
+      <Text style={styles.judul}>{label}</Text>
     </View>
   );
 };
@@ -20,6 +20,10 @@ const Atasan = ({label, top = -400, left = -134}) => {
 export default Atasan;
 
 const styles = StyleSheet.create({
+  container: {
+    top: 14,
+    left: 0,
+  },
   judul: {
     position: 'absolute',
     left: -134,
