@@ -9,12 +9,12 @@ const SignUp: React.FC = () => {
 
   const handleRemaja = () => {
     console.log('Daftar sebagai Remaja');
-    // navigation.navigate('RemajaSignUp');
+    navigation.navigate('RemajaSignUp'); // pastikan ini sudah ada di navigator
   };
 
   const handlePembina = () => {
     console.log('Daftar sebagai Pembina');
-    // navigation.navigate('PembinaSignUp');
+    navigation.navigate('PembinaSignUp'); // pastikan ini juga ada
   };
 
   const handleBack = () => {
@@ -25,7 +25,7 @@ const SignUp: React.FC = () => {
     <View style={styles.container}>
       {/* Background Image */}
       <Image
-        source={require('../../assets/background.jpg')}
+        source={require('../../../assets/background.jpg')} // Sesuaikan path-nya
         style={styles.backgroundImage}
       />
 
@@ -39,6 +39,7 @@ const SignUp: React.FC = () => {
 
           <View style={styles.buttonsContainer}>
             <Button title="Remaja" onPress={handleRemaja} />
+            <View style={{ height: 20 }} />
             <Button title="Pembina" onPress={handlePembina} />
           </View>
         </View>
@@ -86,7 +87,6 @@ const styles = StyleSheet.create({
     color: '#2D3250',
   },
   buttonsContainer: {
-    gap: 20,
     alignItems: 'center',
   },
   bottomSection: {

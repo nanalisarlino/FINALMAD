@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ImageBackground, } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { InputText, Bawahan } from '../../komponen/molekul';
 import { Button } from '../../komponen/atom';
@@ -15,7 +15,7 @@ const SignIn: React.FC = () => {
 
   const handleDaftar = () => {
     console.log('Navigating to sign-up page');
-    // Use navigation.navigate('SignUp') if using React Navigation
+    // navigation.navigate('SignUp')
   };
 
   return (
@@ -39,7 +39,6 @@ const SignIn: React.FC = () => {
             placeholder="Masukkan password"
             secureTextEntry
           />
-          <Button title="Daftar" onPress={handleDaftar} />
 
           {/* Dropdown Role */}
           <View style={styles.pickerContainer}>
@@ -54,11 +53,13 @@ const SignIn: React.FC = () => {
           </View>
 
           {/* Masuk Button */}
-          <Button title="Masuk" onPress={handleMasuk} />
+          <View style={{ marginTop: 16 }}>
+            <Button title="Masuk" onPress={handleMasuk} />
+          </View>
 
           {/* Daftar Link */}
           <TouchableOpacity onPress={handleDaftar}>
-            <Text style={styles.daftarText}>Daftar</Text>
+            <Text style={styles.daftarText}>Belum punya akun? Daftar</Text>
           </TouchableOpacity>
         </View>
 
@@ -82,21 +83,22 @@ const styles = StyleSheet.create({
     paddingTop: 100,
   },
   container: {
-    gap: 16,
+    flexDirection: 'column',
   },
   pickerContainer: {
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 8,
     overflow: 'hidden',
+    marginTop: 16,
   },
   picker: {
-    width: 193,
+    width: '100%',
     height: 42,
   },
   daftarText: {
     fontSize: 15,
-    marginTop: 12,
+    marginTop: 16,
     color: '#2D3250',
     fontWeight: 'bold',
     textAlign: 'center',

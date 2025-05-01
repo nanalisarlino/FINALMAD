@@ -14,36 +14,37 @@ const Entrance: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      {/* Background Image (Top 70%) */}
       <Image
-        source={require('../assets/gambar/background.png')}
+        source={require('../../assets/gambar/background.png')}
         style={styles.backgroundImage}
       />
-      
-      {/* Gradient Image (Bottom 30%) */}
+
+      <View style={styles.topOverlay} />
+
       <Image
         source={require('../../assets/gambar/bottom.png')}
         style={styles.gradientImage}
       />
-      
-      {/* Title Overlay */}
+
       <View style={styles.overlayContent}>
         <Text style={styles.title}>Sistem Absensi RGK</Text>
       </View>
 
-      {/* Bottom Content (SHALLOM!, Buttons, Logo) */}
       <View style={styles.bottomContent}>
         <View style={styles.textAndButtons}>
           <Text style={styles.shallom}>SHALLOM!</Text>
           <View style={styles.buttonsContainer}>
             <Button title="Masuk" onPress={handleMasuk} />
+            <View style={{ width: 12 }} />
             <Button title="Daftar" onPress={handleDaftar} />
           </View>
         </View>
-        <Image source={require('../../assets/gambar/logo.png')} style={styles.logo}/>
+        <Image
+          source={require('../../assets/gambar/logo.png')}
+          style={styles.logo}
+        />
       </View>
 
-      {/* Footer */}
       <View style={styles.footerContainer}>
         <Bawahan />
       </View>
@@ -60,26 +61,37 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     width: '100%',
-    height: '70%',
+    height: '75%',
     resizeMode: 'cover',
   },
+  topOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '15%',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    zIndex: 2,
+  },  
   gradientImage: {
     width: '100%',
-    height: '30%',
+    height: '25%',
     resizeMode: 'cover',
   },
   overlayContent: {
     position: 'absolute',
-    top: '20%',
+    top: '10%',
     width: '100%',
     alignItems: 'center',
-  },
+    zIndex: 2,
+  },  
   title: {
     fontSize: 18,
     fontWeight: '600',
     color: 'white',
     fontFamily: 'SedanSC-Regular',
     textAlign: 'center',
+    top: 10,
   },
   bottomContent: {
     position: 'absolute',
@@ -87,32 +99,33 @@ const styles = StyleSheet.create({
     right: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
   },
   textAndButtons: {
     alignItems: 'flex-end',
+    marginRight: 16,
   },
   shallom: {
-    fontSize: 20,
+    fontSize: 25,
     color: 'white',
     fontWeight: '500',
+    fontFamily: 'SedanSC-Regular',
+    left: 140,
     marginBottom: 12,
   },
   buttonsContainer: {
     flexDirection: 'row',
-    gap: 12,
+    left: 170,
   },
   footerContainer: {
     position: 'absolute',
-    bottom: 20,
+    top: 280,
     width: '100%',
     alignItems: 'center',
   },
   logo: {
     width: 155,
     height: 167,
-    top: -23,
-    left: -671,
+    left: -180,
     resizeMode: 'contain',
-  },  
+  },
 });
