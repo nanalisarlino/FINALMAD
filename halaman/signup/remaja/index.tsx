@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, ScrollView, ImageBackground } from 'react-native';
 import { InputText, Atasan, Bawahan } from '../../../komponen/molekul';
 import { Button } from '../../../komponen/atom';
 
@@ -32,7 +32,7 @@ const RemajaSignUp: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Image
+      <ImageBackground
         source={require('../../../assets/gambar/bg.png')}
         style={styles.backgroundImage}
       />
