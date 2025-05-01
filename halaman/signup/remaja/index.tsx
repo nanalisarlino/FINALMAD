@@ -33,18 +33,18 @@ const RemajaSignUp: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../../assets/gambar/background.png')}
+        source={require('../../../assets/gambar/bg.png')}
         style={styles.backgroundImage}
       />
-    
-      <View style={styles.topOverlay} />
 
       <View style={styles.overlay}>
         <TouchableOpacity onPress={handleBack} style={styles.backButton}>
           <Text style={styles.backText}>←</Text>
         </TouchableOpacity>
 
+        <View style={styles.headerContainer}> 
         <Atasan label="DAFTAR" subtitle="Remaja" />
+        </View>
 
         <ScrollView contentContainerStyle={styles.formContainer} showsVerticalScrollIndicator={false}>
           <InputText label="Nama" value={nama} onChangeText={setNama} placeholder="Masukkan nama lengkap" />
@@ -65,7 +65,11 @@ const RemajaSignUp: React.FC = () => {
           </TouchableOpacity>
         </ScrollView>
 
+        <View style={{ height: 80 }} />
+
+      <View style={styles.footerContainer}> 
         <Bawahan />
+      </View> 
       </View>
     </View>
   );
@@ -79,9 +83,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   backgroundImage: {
-    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
     resizeMode: 'cover',
-  },
+    zIndex: 1,
+  },  
   overlay: {
     flex: 1,
     backgroundColor: 'rgba(255,255,255,0.92)',
@@ -97,6 +108,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
     zIndex: 2,
   },
+  headerContainer: {
+    marginTop: 10,
+    marginBottom: 10,
+    alignItems: 'center',
+  },  
   backButton: {
     position: 'absolute',
     top: 30,
@@ -116,5 +132,11 @@ const styles = StyleSheet.create({
     color: '#2D3250',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  footerContainer: {
+    position: 'absolute',
+    top: 280,
+    width: '100%',
+    alignItems: 'center',
   },
 });

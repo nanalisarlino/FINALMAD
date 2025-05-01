@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, ImageBackground, ScrollView } from 'react-native';
 import { InputText, Atasan, Bawahan } from '../../../komponen/molekul';
 import { Button } from '../../../komponen/atom';
+import { useNavigation } from '@react-navigation/native';
 
 const PembinaSignUp: React.FC = () => {
+  const navigation = useNavigation();
   const [nama, setNama] = useState('');
   const [tanggalLahir, setTanggalLahir] = useState('');
   const [kolom, setKolom] = useState('');
@@ -12,84 +14,44 @@ const PembinaSignUp: React.FC = () => {
   const [password, setPassword] = useState('');
 
   const handleDaftar = () => {
-    console.log({
-      nama,
-      tanggalLahir,
-      kolom,
-      alamat,
-      nomorHP,
-      password,
-    });
+    console.log({ nama, tanggalLahir, kolom, alamat, nomorHP, password });
   };
 
   const handleBack = () => {
-    console.log('Back pressed');
-    // navigation.goBack() if using React Navigation
+    navigation.goBack();
   };
 
   return (
     <ImageBackground
-    source={require('../../../assets/gambar/background.png')}
-    style={styles.imageBackground}
+      source={require('../../../assets/gambar/background.png')}
+      style={styles.imageBackground}
     >
-    <View style={styles.container}>
-      {/* Back Button */}
-      <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-        <Text style={styles.backText}>←</Text>
-      </TouchableOpacity>
-
-      {/* Header */}
-      <Atasan label="DAFTAR" subtitle="Pembina" />
-
-      <View style={styles.formContainer}>
-        <InputText 
-        label="Nama" 
-        value={nama} 
-        onChangeText={setNama} 
-        placeholder="Masukkan nama lengkap" 
-        />
-        <InputText 
-        label="Tanggal Lahir" 
-        value={tanggalLahir} 
-        onChangeText={setTanggalLahir} 
-        placeholder="Masukkan tanggal lahir" />
-        <InputText 
-        label="Kolom" 
-        value={kolom} 
-        onChangeText={setKolom} 
-        placeholder="Masukkan kolom" 
-        />
-        <InputText
-          label="Alamat"
-          value={alamat}
-          onChangeText={setAlamat}
-          placeholder="Masukkan alamat rumah"
-          multiline
-        />
-        <InputText
-          label="Nomor HP (WhatsApp)"
-          value={nomorHP}
-          onChangeText={setNomorHP}
-          placeholder="Masukkan nomor HP"
-          keyboardType="phone-pad"
-        />
-        <InputText
-          label="Password"
-          value={password}
-          onChangeText={setPassword}
-          placeholder="Masukkan password"
-          secureTextEntry
-        />
-        <Button title="Daftar" onPress={handleDaftar} />
-
-        {/* Link to Sign In */}
-        <TouchableOpacity onPress={() => console.log('Navigate to Sign In')}>
-          <Text style={styles.loginText}>Masuk</Text>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+          <Text style={styles.backText}>←</Text>
         </TouchableOpacity>
-      </View>
 
-      <Bawahan />
-    </View>
+        <Atasan label="DAFTAR" subtitle="Pembina" />
+
+        <ScrollView contentContainerStyle={styles.formContainer} showsVerticalScrollIndicator={false}>
+          <InputText label="Nama" value={nama} onChangeText={setNama} placeholder="Masukkan nama lengkap" />
+          <InputText label="Tanggal Lahir" value={tanggalLahir} onChangeText={setTanggalLahir} placeholder="Masukkan tanggal lahir" />
+          <InputText label="Kolom" value={kolom} onChangeText={setKolom} placeholder="Masukkan kolom" />
+          <InputText label="Alamat" value={alamat} onChangeText={setAlamat} placeholder="Masukkan alamat rumah" multiline />
+          <InputText label="Nomor HP (WhatsApp)" value={nomorHP} onChangeText={setNomorHP} placeholder="Masukkan nomor HP" keyboardType="phone-pad" />
+          <InputText label="Password" value={password} onChangeText={setPassword} placeholder="Masukkan password" secureTextEntry />
+
+          <View style={{ marginTop: 16 }}>
+            <Button title="Daftar" onPress={handleDaftar} />
+          </View>
+
+          <TouchableOpacity onPress={() => console.log('Navigate to Sign In')}>
+            <Text style={styles.loginText}>Masuk</Text>
+          </TouchableOpacity>
+        </ScrollView>
+
+        <Bawahan />
+      </View>
     </ImageBackground>
   );
 };
@@ -98,15 +60,9 @@ export default PembinaSignUp;
 
 const styles = StyleSheet.create({
   imageBackground: {
-        flex: 1,
-        resizeMode: 'cover',
-},
-  overlay: {
     flex: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.85)',
-    paddingHorizontal: 20,
-    paddingTop: 60,
-},
+    resizeMode: 'cover',
+  },
   container: {
     flex: 1,
     paddingHorizontal: 20,
@@ -124,11 +80,7 @@ const styles = StyleSheet.create({
     color: '#2D3250',
   },
   formContainer: {
-    flex: 1,
-    marginTop: 20,
-    gap: 16,
-    width: 345,
-    height: 40,
+    paddingBottom: 30,
   },
   loginText: {
     fontSize: 15,

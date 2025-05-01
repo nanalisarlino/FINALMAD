@@ -8,7 +8,7 @@ interface AtasanProps {
   left?: number;
 }
 
-const Atasan: React.FC<AtasanProps> = ({ label, subtitle, top = -400, left = -134 }) => {
+const Atasan: React.FC<AtasanProps> = ({ label, subtitle, top = -50, left = -50 }) => {
   return (
     <View>
       <Image
@@ -21,7 +21,7 @@ const Atasan: React.FC<AtasanProps> = ({ label, subtitle, top = -400, left = -13
       />
       <Text style={[styles.judul, { top, left }]}>{label}</Text>
       {subtitle && (
-        <Text style={[styles.subtitle, { top: top + 28, left }]}>{subtitle}</Text>
+        <Text style={[styles.subtitle, { top: top + 28, left: left + 23 }]}>{subtitle}</Text>
       )}
     </View>
   );
