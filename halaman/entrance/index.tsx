@@ -16,7 +16,7 @@ const Entrance: React.FC = () => {
     <View style={styles.container}>
       {/* Background Image (Top 70%) */}
       <Image
-        source={require('../../assets/gambar/background.jpg')}
+        source={require('../assets/gambar/background.png')}
         style={styles.backgroundImage}
       />
       
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   bottomContent: {
     position: 'absolute',
-    bottom: 100, // Places it above footer with a gap
+    bottom: 100,
     right: 20,
     flexDirection: 'row',
     alignItems: 'center',
