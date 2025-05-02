@@ -4,7 +4,7 @@ import {Button} from '../../../komponen/atom';
 import {Bawahan} from '../../../komponen/molekul';
 import {useNavigation} from '@react-navigation/native';
 
-const SignUp: React.FC = () => {
+const Pilih: React.FC = () => {
   const navigation = useNavigation();
 
   const handleRemaja = () => {
@@ -55,7 +55,7 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default SignUp;
+export default Pilih;
 
 const styles = StyleSheet.create({
   container: {

@@ -3,7 +3,7 @@ import {View, StyleSheet, Image, Text} from 'react-native';
 import {Atasan, Bawahan} from '../../../komponen/molekul';
 import {Garis, TeksBiasa} from '../../../komponen/atom';
 
-const LihatDetail = () => {
+const DetailKehadiran = () => {
   return (
     <View style={styles.container}>
       <Atasan label={'REMAJA BAITEL KEMA'} />
@@ -29,7 +29,7 @@ const LihatDetail = () => {
   );
 };
 
-export default LihatDetail;
+export default DetailKehadiran;
 
 const styles = StyleSheet.create({
   container: {

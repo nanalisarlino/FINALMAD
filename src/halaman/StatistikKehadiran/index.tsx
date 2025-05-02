@@ -74,7 +74,7 @@ const DUMMY_MEMBERS = [
   {id: '11', name: 'Charly Mamuntu', age: 12, attendance: ['2023-04-01']},
 ];
 
-const App = () => {
+const Statistik = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMembers, setFilteredMembers] = useState(DUMMY_MEMBERS);
   const [selectedMember, setSelectedMember] = useState(null);
@@ -416,4 +416,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Statistik;

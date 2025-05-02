@@ -1,5 +1,5 @@
-import Atasan from './Header';
-import Bawahan from './Footer';
+import Atasan from './Atasan';
+import Bawahan from './Bawahan';
 import InputText from './InputText';
 
 export {Atasan, Bawahan, InputText};
