@@ -1,42 +1,57 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, ImageBackground, ScrollView } from 'react-native';
-import { InputText, Atasan, Bawahan } from '../../../komponen/molekul';
-import { Button } from '../../../komponen/atom';
-import { useNavigation } from '@react-navigation/native';
+import { View, StyleSheet, TouchableOpacity, Text, ScrollView, ImageBackground } from 'react-native';
+import { InputText, Atasan, Bawahan } from '../../../Komponen/Molekul';
+import { Button } from '../../../Komponen/Atom';
 
-const PembinaSignUp: React.FC = () => {
-  const navigation = useNavigation();
+const RemajaSignUp: React.FC = () => {
   const [nama, setNama] = useState('');
   const [tanggalLahir, setTanggalLahir] = useState('');
   const [kolom, setKolom] = useState('');
+  const [namaAyah, setNamaAyah] = useState('');
+  const [namaIbu, setNamaIbu] = useState('');
   const [alamat, setAlamat] = useState('');
   const [nomorHP, setNomorHP] = useState('');
   const [password, setPassword] = useState('');
 
   const handleDaftar = () => {
-    console.log({ nama, tanggalLahir, kolom, alamat, nomorHP, password });
+    console.log({
+      nama,
+      tanggalLahir,
+      kolom,
+      namaAyah,
+      namaIbu,
+      alamat,
+      nomorHP,
+      password,
+    });
   };
 
   const handleBack = () => {
-    navigation.goBack();
+    console.log('Back pressed');
   };
 
   return (
-    <ImageBackground
-      source={require('../../../assets/gambar/background.png')}
-      style={styles.imageBackground}
-    >
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <ImageBackground
+        source={require('../../../assets/gambar/bg.png')}
+        style={styles.backgroundImage}
+      />
+
+      <View style={styles.overlay}>
         <TouchableOpacity onPress={handleBack} style={styles.backButton}>
           <Text style={styles.backText}>←</Text>
         </TouchableOpacity>
 
-        <Atasan label="DAFTAR" subtitle="Pembina" />
+        <View style={styles.headerContainer}> 
+        <Atasan label="DAFTAR" subtitle="Remaja" />
+        </View>
 
         <ScrollView contentContainerStyle={styles.formContainer} showsVerticalScrollIndicator={false}>
           <InputText label="Nama" value={nama} onChangeText={setNama} placeholder="Masukkan nama lengkap" />
           <InputText label="Tanggal Lahir" value={tanggalLahir} onChangeText={setTanggalLahir} placeholder="Masukkan tanggal lahir" />
           <InputText label="Kolom" value={kolom} onChangeText={setKolom} placeholder="Masukkan kolom" />
+          <InputText label="Nama Ayah" value={namaAyah} onChangeText={setNamaAyah} placeholder="Masukkan nama ayah" />
+          <InputText label="Nama Ibu" value={namaIbu} onChangeText={setNamaIbu} placeholder="Masukkan nama ibu" />
           <InputText label="Alamat" value={alamat} onChangeText={setAlamat} placeholder="Masukkan alamat rumah" multiline />
           <InputText label="Nomor HP (WhatsApp)" value={nomorHP} onChangeText={setNomorHP} placeholder="Masukkan nomor HP" keyboardType="phone-pad" />
           <InputText label="Password" value={password} onChangeText={setPassword} placeholder="Masukkan password" secureTextEntry />
@@ -50,25 +65,54 @@ const PembinaSignUp: React.FC = () => {
           </TouchableOpacity>
         </ScrollView>
 
+        <View style={{ height: 80 }} />
+
+      <View style={styles.footerContainer}> 
         <Bawahan />
+      </View> 
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 
-export default PembinaSignUp;
+export default RemajaSignUp;
 
 const styles = StyleSheet.create({
-  imageBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-  },
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 60,
     backgroundColor: 'white',
   },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    zIndex: 1,
+  },  
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(255,255,255,0.92)',
+    paddingHorizontal: 20,
+    paddingTop: 60,
+  },
+  topOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '15%',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    zIndex: 2,
+  },
+  headerContainer: {
+    marginTop: 10,
+    marginBottom: 10,
+    alignItems: 'center',
+  },  
   backButton: {
     position: 'absolute',
     top: 30,
@@ -88,5 +132,11 @@ const styles = StyleSheet.create({
     color: '#2D3250',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  footerContainer: {
+    position: 'absolute',
+    top: 280,
+    width: '100%',
+    alignItems: 'center',
   },
 });

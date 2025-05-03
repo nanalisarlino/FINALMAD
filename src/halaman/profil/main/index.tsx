@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Image, Text, TouchableOpacity} from 'react-native';
-import {Atasan, Bawahan} from '../../../komponen/molekul';
-import {TeksBiasa, TeksLink} from '../../../komponen/atom';
+import {Atasan, Bawahan} from '../../../Komponen/Molekul';
+import {TeksBiasa, TeksLink} from '../../../Komponen/Atom';
 import {launchImageLibrary} from 'react-native-image-picker';
 
 const MainProfile = () => {

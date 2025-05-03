@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Button } from '../../../komponen/atom';
-import { Bawahan } from '../../../komponen/molekul';
+import { Button } from '../../../Komponen/Atom';
+import { Bawahan } from '../../../Komponen/Molekul';
 import { useNavigation } from '@react-navigation/native';
 
 const SignUp: React.FC = () => {

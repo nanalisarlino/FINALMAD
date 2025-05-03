@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ImageBackground, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import { InputText, Bawahan } from '../../komponen/molekul';
-import { Button } from '../../komponen/atom';
+import { InputText, Bawahan } from '../../Komponen/Molekul';
+import { Button } from '../../Komponen/Atom';
 
 const SignIn: React.FC = () => {
   const [nomorHP, setNomorHP] = useState('');

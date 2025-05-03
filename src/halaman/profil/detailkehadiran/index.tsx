@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Image, Text} from 'react-native';
-import {Atasan, Bawahan} from '../../../komponen/molekul';
-import {Garis, TeksBiasa} from '../../../komponen/atom';
+import {Atasan, Bawahan} from '../../../Komponen/Molekul';
+import {Garis, TeksBiasa} from '../../../Komponen/Atom';
 
 const LihatDetail = () => {
   return (

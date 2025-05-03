@@ -12,7 +12,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Atasan, Bawahan} from '../../komponen/molekul';
+import {Atasan, Bawahan} from '../../Komponen/Molekul';
 
 // Data untuk contoh anggota
 const DUMMY_MEMBERS = [
