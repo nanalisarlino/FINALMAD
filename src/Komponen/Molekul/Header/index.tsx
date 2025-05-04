@@ -24,6 +24,7 @@ const Atasan: React.FC<AtasanProps> = ({
         source={require('../../../assets/gambar/Rectangle11.png')}
         style={styles.image}
       />
+
       <Text style={[styles.judul, {top, left}]}>{label}</Text>
       {subtitle && (
         <Text style={[styles.subtitle, {top: top + 28, left}]}>{subtitle}</Text>

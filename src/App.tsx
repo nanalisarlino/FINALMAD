@@ -1,12 +1,12 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 //import file
-import Entrance from './halaman/Entrance';
+import Entrance from './halaman/entrance';
 import JadwalIbadah from './halaman/JadwalIbadah';
-import {DetailKehadiran, MainProfile} from './halaman/Profile';
-import SignIn from './halaman/SignIn';
-import {PembinaSignUp, Pilih, RemajaSignUp} from './halaman/SignUp';
-import Statistik from './halaman/StatistikKehadiran';
+import {DetailKehadiran, MainProfile} from './halaman/profil';
+import SignIn from './halaman/signin';
+import {PembinaSignUp, Pilih, RemajaSignUp} from './halaman/signup';
+import Statistik from './halaman/statistik';
 
 //import navigation stuff
 import {NavigationContainer} from '@react-navigation/native';

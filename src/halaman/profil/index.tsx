@@ -1,4 +1,4 @@
-import DetailKehadiran from './DetailKehadiran';
-import MainProfile from './MainProfile';
+import DetailKehadiran from './detailkehadiran';
+import MainProfile from './main';
 
 export {DetailKehadiran, MainProfile};

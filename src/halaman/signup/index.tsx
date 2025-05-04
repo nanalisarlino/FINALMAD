@@ -1,5 +1,5 @@
-import Pilih from './Pilih';
-import PembinaSignUp from './PembinaSignUp';
-import RemajaSignUp from './RemajaSignUp';
+import Pilih from './main';
+import PembinaSignUp from './pembina';
+import RemajaSignUp from './remaja';
 
 export {Pilih, PembinaSignUp, RemajaSignUp};
