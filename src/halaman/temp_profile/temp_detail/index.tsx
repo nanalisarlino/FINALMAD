@@ -5,8 +5,10 @@ import {Garis, TeksBiasa} from '../../../Komponen/Atom';
 import {createStaticNavigation, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const DetailKehadiran = ({}) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
+      onPress={() => navigation.goBack()}
       <Atasan label={'REMAJA BAITEL KEMA'} />
       <View style={styles.bgiconplus} />
       <Text style={styles.tekstambahfoto}> Informasi Pribadi</Text>
