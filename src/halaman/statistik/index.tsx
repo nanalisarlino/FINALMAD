@@ -120,16 +120,16 @@ const Statistik = () => {
       <LinearGradient
         colors={['rgba(45, 50, 89, 0.9)', 'rgba(255, 255, 255, 0.8)']}
         style={styles.container}>
+        <Image
+          source={require('../../assets/gambar/Rectangle11.png')}
+          style={styles.image}
+        />
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
             source={require('../../assets/ikon/Panahkembali.png')}
             style={styles.image0}
           />
         </TouchableOpacity>
-        <Image
-          source={require('../../assets/gambar/Rectangle11.png')}
-          style={styles.image}
-        />
         <Text style={styles.judul}>ABSENSI REMAJA & PEMBINA</Text>
         <View style={styles.logoContainer}>
           <Image
