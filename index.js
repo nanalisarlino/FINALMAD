@@ -16,4 +16,4 @@ import RemajaDashboard from './src/halaman/dashboard/remaja';
 import PembinaDashboard from './src/halaman/dashboard/pembina';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => PembinaDashboard);
+AppRegistry.registerComponent(appName, () => SignIn);

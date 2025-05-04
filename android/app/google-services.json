@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1041978782639",
+    "project_id": "sistem-absensi-rgk",
+    "storage_bucket": "sistem-absensi-rgk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041978782639:android:2d966384d1b018b46cb55a",
+        "android_client_info": {
+          "package_name": "com.siregeka"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDt5VQ_vL7XSVtuQu5CNh827Q84WCBZtE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
