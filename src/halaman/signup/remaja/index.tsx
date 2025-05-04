@@ -13,7 +13,6 @@ import {Button} from '../../../Komponen/Atom';
 import LinearGradient from 'react-native-linear-gradient';
 import {createStaticNavigation, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Button} from '@react-navigation/elements';
 
 const RemajaSignUp: React.FC = ({}) => {
   const navigation = useNavigation();
@@ -37,9 +36,18 @@ const RemajaSignUp: React.FC = ({}) => {
       alamat,
       nomorHP,
       password,
-    })
-    navigation.navigate('Dashboard')};
+    });
+    navigation.navigate('Remaja Dashboard');
   };
+
+  const handlegoback = () => {
+    navigation.goBack();
+  };
+
+  const handlemasuk = () => {
+    navigation.navigate('Remaja Dashboard');
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -49,11 +57,22 @@ const RemajaSignUp: React.FC = ({}) => {
       <LinearGradient
         colors={['rgba(45, 50, 89, 0.9)', 'rgba(255, 255, 255, 0.8)']}
         style={styles.linear}>
-        <View>
+        <View style={styles.buttoncontainer}>
+          <TouchableOpacity>
+            <View style={{marginTop: 16, alignItems: 'center'}}>
+              <Button title="Daftar" onPress={handleDaftar} />
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate('Pilih')}>
+            <Text style={styles.loginText}>Masuk</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.judulcontainer}>
           <Text style={styles.teks}>Daftar</Text>
           <Text style={styles.subtitle}> Remaja</Text>
         </View>
-        <TouchableOpacity style={styles.backButton} onPress= {()=> navigate.goBack()}>
+        <TouchableOpacity style={styles.backButton} onPress={handlegoback}>
           <Image
             source={require('../../../assets/ikon/Panahkembali.png')}
             style={{tintColor: '#fff'}}
@@ -114,15 +133,6 @@ const RemajaSignUp: React.FC = ({}) => {
               placeholder="Masukkan password"
               secureTextEntry
             />
-
-            <View style={{marginTop: 16, alignItems: 'center'}}>
-              <Button title="Daftar" onPress={handleDaftar} />
-            </View>
-
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Sign In')}>
-              <Text style={styles.loginText}>Masuk</Text>
-            </TouchableOpacity>
           </ScrollView>
 
           <View style={{height: 80}} />
@@ -140,6 +150,15 @@ const styles = StyleSheet.create({
   },
   linear: {
     padding: 30,
+  },
+  buttoncontainer: {
+    top: 770,
+    zIndex: 10,
+  },
+  judulcontainer: {
+    position: 'absolute',
+    top: 50,
+    left: 150,
   },
   teks: {
     textAlign: 'center',
@@ -173,7 +192,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   overlay: {
-    marginTop: 10,
+    marginTop: 0,
   },
   backButton: {
     position: 'absolute',
@@ -182,7 +201,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   formContainer: {
-    paddingBottom: 30,
+    paddingBottom: 10,
   },
   loginText: {
     position: 'absolute',

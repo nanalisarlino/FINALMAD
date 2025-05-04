@@ -6,6 +6,9 @@ interface AtasanProps {
   subtitle?: string;
   top?: number;
   left?: number;
+  fontSize?: number;
+  width?: number;
+  height?: number;
 }
 
 const Atasan: React.FC<AtasanProps> = ({
@@ -13,20 +16,25 @@ const Atasan: React.FC<AtasanProps> = ({
   subtitle,
   top = -400,
   left = -134,
+  fontSize = 24,
+  width = 40,
+  height = 40,
 }) => {
   return (
     <View>
       <Image
         source={require('../../../assets/ikon/Panahkembali.png')}
-        style={styles.image0}
+        style={[styles.image0, {width, height}]}
       />
       <Image
         source={require('../../../assets/gambar/Rectangle11.png')}
         style={styles.image}
       />
-      <Text style={[styles.judul, {top, left}]}>{label}</Text>
+      <Text style={[styles.judul, {top, left, fontSize}]}>{label}</Text>
       {subtitle && (
-        <Text style={[styles.subtitle, {top: top + 28, left}]}>{subtitle}</Text>
+        <Text style={[styles.subtitle, {top: top + 28, left: left + 47}]}>
+          {subtitle}
+        </Text>
       )}
     </View>
   );

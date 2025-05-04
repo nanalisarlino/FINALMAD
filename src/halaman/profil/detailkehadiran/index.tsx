@@ -1,15 +1,23 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text} from 'react-native';
+import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 import {Atasan, Bawahan} from '../../../Komponen/Molekul';
 import {Garis, TeksBiasa} from '../../../Komponen/Atom';
 import {createStaticNavigation, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-const DetailKehadiran = ({}) => {
+
+const DetailKehadiran = () => {
   const navigation = useNavigation();
+
+  const handlegoback = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
-      onPress={() => navigation.goBack()}
-      <Atasan label={'REMAJA BAITEL KEMA'} />
+      <TouchableOpacity style={styles.backButton} onPress={handlegoback}>
+        <Image source={require('../../../assets/ikon/Panahkembali.png')} />
+      </TouchableOpacity>
+      <Atasan label={'REMAJA BAITEL KEMA'} width={1} height={1} />
       <View style={styles.bgiconplus} />
       <Text style={styles.tekstambahfoto}> Informasi Pribadi</Text>
       <TeksBiasa label={'Detail Kehadiran'} top={-160} left={-60} />
@@ -40,6 +48,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  backButton: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    top: 10,
+    left: 10,
+    zIndex: 10,
   },
   bgiconplus: {
     position: 'absolute',

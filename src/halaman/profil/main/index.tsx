@@ -9,6 +9,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const MainProfile = () => {
   const navigation = useNavigation();
   // State untuk menyimpan URI gambar yang dipilih
+  const handlegoback = () => {
+    navigation.goBack();
+  };
+
   const [imageUri, setImageUri] = useState(null);
 
   // Fungsi untuk memilih gambar dari galeri
@@ -32,11 +36,10 @@ const MainProfile = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image
-          source={require('../../../assets/ikon/Panahkembali.png')}
-          style={styles.image0}
-        />
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}>
+        <Image source={require('../../../assets/ikon/Panahkembali.png')} />
       </TouchableOpacity>
       <Atasan label={'REMAJA BAITEL KEMA'} />
       {/* Tombol untuk memilih gambar */}
@@ -87,6 +90,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#757575',
     width: '65%',
     top: 30,
+  },
+  backButton: {
+    position: 'absolute',
+    width: 10,
+    height: 50,
+    top: 10,
+    left: 10,
+    zIndex: 10,
   },
   image0: {
     position: 'absolute',

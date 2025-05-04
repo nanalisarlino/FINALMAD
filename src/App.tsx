@@ -11,6 +11,8 @@ import Statistik from './halaman/statistik';
 //import navigation stuff
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import RemajaDashboard from './halaman/dashboard/remaja';
+import PembinaDashboard from './halaman/dashboard/pembina';
 
 const Stack = createStackNavigator();
 
@@ -63,7 +65,18 @@ const Routing = () => {
           component={Statistik}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="Remaja Dashboard"
+          component={RemajaDashboard}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Pembina Dashboard"
+          component={PembinaDashboard}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
+      ``
     </NavigationContainer>
   );
 };

@@ -162,17 +162,17 @@ const JadwalIbadah = () => {
         colors={['rgba(255, 255, 255, 0.8)', 'rgba(45, 50, 89, 0.9)']}
         style={styles.container}>
         <View>
-          <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-            <Image
-              source={require('../../assets/ikon/Panahkembali.png')}
-              style={styles.image1}
-            />
-          </TouchableOpacity>
           <Image
             source={require('../../assets/gambar/Rectangle11.png')}
             style={styles.image0}
           />
           <Text style={styles.judul}>REMAJA GEMA KASIH</Text>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              source={require('../../assets/ikon/Panahkembali.png')}
+              style={styles.image1}
+            />
+          </TouchableOpacity>
         </View>
         <View>
           <Ionicons
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 40,
     height: 40,
-    top: 20,
+    top: 10,
     left: 14,
   },
   backgroundImage: {
@@ -227,23 +227,9 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#3b466e',
-    paddingVertical: 20,
-    paddingHorizontal: 15,
   },
   backButton: {
     padding: 5,
-  },
-  headerTitle: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginLeft: 10,
   },
   jadwalIbadahText: {
     color: '#000',

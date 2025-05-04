@@ -40,9 +40,10 @@ const Entrance: React.FC = ({}) => {
             <Button
               title="Masuk"
               onPress={() => navigation.navigate('Sign In')}
+              width={200}
             />
-            <View style={{width: 12}} />
             <Button
+              width={200}
               title="Daftar"
               onPress={() => navigation.navigate('Pilih')}
             />
@@ -111,10 +112,11 @@ const styles = StyleSheet.create({
   },
   textAndButtons: {
     alignItems: 'flex-end',
-    marginRight: 16,
+    marginRight: 50,
+    top: 40,
   },
   shallom: {
-    fontSize: 40,
+    fontSize: 60,
     color: 'white',
     fontWeight: '500',
     fontFamily: 'SedanSC-Regular',
@@ -122,8 +124,8 @@ const styles = StyleSheet.create({
     color: '#2d3250',
   },
   buttonsContainer: {
-    flexDirection: 'row',
-    left: 170,
+    flexDirection: 'column',
+    left: 200,
   },
   footerContainer: {
     position: 'absolute',
@@ -134,7 +136,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 155,
     height: 167,
-    left: -180,
+    left: -200,
+    top: 70,
     resizeMode: 'contain',
   },
 });

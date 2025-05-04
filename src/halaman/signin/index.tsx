@@ -21,14 +21,18 @@ const SignIn: React.FC = () => {
 
   const [nomorHP, setNomorHP] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('remaja');
+  const [role, setRole] = useState<'remaja' | 'pembina'>('remaja');
 
   const handleMasuk = () => {
-    console.log({nomorHP, password, role});
+    if (role === 'remaja') {
+      navigation.navigate('Remaja Dashboard');
+    } else if (role === 'pembina') {
+      navigation.navigate('Pembina Dashboard');
+    }
   };
-
   const handleDaftar = () => {
     console.log('Navigating to sign-up page');
+    navigation.navigate('Pilih');
   };
 
   return (
@@ -59,6 +63,7 @@ const SignIn: React.FC = () => {
                 secureTextEntry
               />
               <View style={styles.pickerContainer}>
+                <Text style={styles.label}>Pilih Peran:</Text>
                 <Picker
                   selectedValue={role}
                   onValueChange={itemValue => setRole(itemValue)}
@@ -67,13 +72,10 @@ const SignIn: React.FC = () => {
                   <Picker.Item label="Pembina" value="pembina" />
                 </Picker>
               </View>
-              <View style={{marginTop: 16}}>
-                <Button
-                  title="Masuk"
-                  onPress={() => navigation.navigate('Dashboard')}
-                />
+              <View style={{marginTop: 50, alignItems: 'center'}}>
+                <Button title="Masuk" onPress={handleMasuk} />
               </View>
-              <TouchableOpacity onPress={() => navigation.navigate('Sign In')}>
+              <TouchableOpacity onPress={handleDaftar}>
                 <Text style={styles.daftarText}>Belum punya akun? Daftar</Text>
               </TouchableOpacity>
             </KeyboardAvoidingView>
@@ -120,17 +122,21 @@ const styles = StyleSheet.create({
   keyboardAvoiding: {
     flex: 1,
   },
+  label: {
+    marginBottom: 0,
+    fontWeight: '600',
+  },
   contentContainer: {
     marginTop: 278,
     backgroundColor: '#fff',
   },
   pickerContainer: {
     width: 193,
-    height: 42,
+    height: 70,
     borderRadius: 8,
     overflow: 'hidden',
-    marginTop: 30,
-    padding: 0,
+    marginTop: 10,
+    padding: 3,
   },
   picker: {
     width: '100%',

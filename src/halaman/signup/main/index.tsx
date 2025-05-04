@@ -9,6 +9,18 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Pilih: React.FC = () => {
   const navigation = useNavigation();
+
+  const handlepickremaja = () => {
+    navigation.navigate('Remaja Sign Up');
+  };
+
+  const handlepickpembina = () => {
+    navigation.navigate('Pembina Sign Up');
+  };
+
+  const handlegoback = () => {
+    navigation.goBack();
+  };
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -25,22 +37,14 @@ const Pilih: React.FC = () => {
           <View style={styles.content}>
             <Judul label={'Daftar'} style={styles.judulbesar} />
             <View style={styles.buttonsContainer}>
-              <Button
-                title="Remaja"
-                onPress={() => navigation.navigate('Remaja Sign Up')}
-              />
-              <Button
-                title="Pembina"
-                onPress={() => navigation.navigate('Pembina Sign Up')}
-              />
+              <Button title="Remaja" onPress={handlepickremaja} />
+              <Button title="Pembina" onPress={handlepickpembina} />
             </View>
           </View>
 
           {/* Bottom Section: Back Button + Footer */}
           <View style={styles.bottomSection}>
-            <TouchableOpacity
-              style={styles.backButton}
-              onPress={() => navigation.goBack()}>
+            <TouchableOpacity style={styles.backButton} onPress={handlegoback}>
               <Image
                 source={require('../../../assets/ikon/Panahkembali.png')}
               />
