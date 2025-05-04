@@ -3,11 +3,9 @@
  */
 
 import {AppRegistry} from 'react-native';
-import App from './src/App';
-import {MainProfile, LihatDetail} from './halaman/profil';
-import Statistik from './halaman/statistik';
 import {name as appName} from './app.json';
-import JadwalIbadah from './halaman/jadwal';
-import Latihan from './test';
-
-AppRegistry.registerComponent(appName, () => Latihan);
+import Routing from './src/App';
+import {PembinaSignUp, Pilih, RemajaSignUp} from './src/halaman/SignUp';
+import SignIn from './src/halaman/SignIn';
+import {MainProfile} from './src/halaman/Profile';
+AppRegistry.registerComponent(appName, () => MainProfile);

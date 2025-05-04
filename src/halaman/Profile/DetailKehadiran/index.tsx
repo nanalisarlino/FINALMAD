@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, Image, Text} from 'react-native';
-import {Atasan, Bawahan} from '../../../komponen/molekul';
-import {Garis, TeksBiasa} from '../../../komponen/atom';
-
-const DetailKehadiran = () => {
+import {Atasan, Bawahan} from '../../../Komponen/Molekul';
+import {Garis, TeksBiasa} from '../../../Komponen/Atom';
+import {createStaticNavigation, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+const DetailKehadiran = ({}) => {
   return (
     <View style={styles.container}>
       <Atasan label={'REMAJA BAITEL KEMA'} />

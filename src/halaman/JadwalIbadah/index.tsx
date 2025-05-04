@@ -13,10 +13,14 @@ import {
 import {ImageBackground} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {createStaticNavigation, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const {width} = Dimensions.get('window');
 
 const JadwalIbadah = () => {
+  const navigation = useNavigation();
+
   const [selectedSchedule, setSelectedSchedule] = useState(null);
   const [showDetailModal, setShowDetailModal] = useState(false);
 
@@ -158,10 +162,12 @@ const JadwalIbadah = () => {
         colors={['rgba(255, 255, 255, 0.8)', 'rgba(45, 50, 89, 0.9)']}
         style={styles.container}>
         <View>
-          <Image
-            source={require('../../assets/ikon/Panahkembali.png')}
-            style={styles.image1}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+            <Image
+              source={require('../../assets/ikon/Panahkembali.png')}
+              style={styles.image1}
+            />
+          </TouchableOpacity>
           <Image
             source={require('../../assets/gambar/Rectangle11.png')}
             style={styles.image0}

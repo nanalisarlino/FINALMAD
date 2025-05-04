@@ -12,8 +12,8 @@ import {
   ImageBackground,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Atasan, Bawahan} from '../../komponen/molekul';
-
+import {createStaticNavigation, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // Data untuk contoh anggota
 const DUMMY_MEMBERS = [
   {
@@ -75,6 +75,8 @@ const DUMMY_MEMBERS = [
 ];
 
 const Statistik = () => {
+  const navigation = useNavigation();
+
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMembers, setFilteredMembers] = useState(DUMMY_MEMBERS);
   const [selectedMember, setSelectedMember] = useState(null);
@@ -118,10 +120,12 @@ const Statistik = () => {
       <LinearGradient
         colors={['rgba(45, 50, 89, 0.9)', 'rgba(255, 255, 255, 0.8)']}
         style={styles.container}>
-        <Image
-          source={require('../../assets/ikon/Panahkembali.png')}
-          style={styles.image0}
-        />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image
+            source={require('../../assets/ikon/Panahkembali.png')}
+            style={styles.image0}
+          />
+        </TouchableOpacity>
         <Image
           source={require('../../assets/gambar/Rectangle11.png')}
           style={styles.image}
