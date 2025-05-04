@@ -1,19 +1,27 @@
 import React, {useState} from 'react';
+import {useRoute} from '@react-navigation/native';
 import {StyleSheet, View, Image, Text, TouchableOpacity} from 'react-native';
 import {Atasan, Bawahan} from '../../../Komponen/Molekul';
 import {TeksBiasa, TeksLink} from '../../../Komponen/Atom';
 import {launchImageLibrary} from 'react-native-image-picker';
+import {createStaticNavigation, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const MainProfile = () => {
-  // State untuk menyimpan URI gambar yang dipilih
+  const navigation = useNavigation();
+  const handlegoback = () => {
+    navigation.goBack();
+  };
+
+  const route = useRoute();
+  const { nama, tanggalLahir, kolom, status } = route.params;
   const [imageUri, setImageUri] = useState(null);
 
-  // Fungsi untuk memilih gambar dari galeri
   const pickImage = () => {
     launchImageLibrary(
       {
-        mediaType: 'photo', // Hanya foto yang dipilih
-        quality: 0.5, // Mengatur kualitas gambar
+        mediaType: 'photo',
+        quality: 0.5,
       },
       response => {
         if (response.didCancel) {
@@ -21,7 +29,7 @@ const MainProfile = () => {
         } else if (response.errorCode) {
           console.log('ImagePicker Error: ', response.errorCode);
         } else {
-          setImageUri(response.assets[0].uri); // Menyimpan URI gambar
+          setImageUri(response.assets[0].uri);
         }
       },
     );
@@ -29,6 +37,11 @@ const MainProfile = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}>
+        <Image source={require('../../../assets/ikon/Panahkembali.png')} />
+      </TouchableOpacity>
       <Atasan label={'REMAJA BAITEL KEMA'} />
       {/* Tombol untuk memilih gambar */}
       <TouchableOpacity onPress={pickImage}>
@@ -41,7 +54,7 @@ const MainProfile = () => {
       <Text style={styles.tekstambahfoto}> Informasi Pribadi</Text>
 
       <Image
-        source={require('../../../assets/ikon/+.png')} // Ikon plus dari assets
+        source={require('../../../assets/ikon/+.png')}
         style={styles.iconplus}
       />
 
@@ -52,15 +65,14 @@ const MainProfile = () => {
 
       <View style={styles.garis} />
       <TeksBiasa label={'8 Kali Hadir'} top={50} left={-50} />
-      <TeksLink label={'Lihat Detail'} top={85} left={-43} />
-
-      <Image
-        source={require('../../../assets/gambar/qr.png')} // Gambar QR dari assets
-        style={styles.qr}
+      <TeksLink
+        label={'Lihat Detail'}
+        top={85}
+        left={-43}
+        onPress={() =>
+          navigation.navigate('Detail Kehadiran', {nama, imageUri,})
+        }
       />
-
-      <TeksLink label={'Download QR'} top={330} left={-50} />
-      <TeksBiasa label={'a90BTh'} top={357} left={-40} />
 
       <Bawahan />
     </View>
@@ -81,6 +93,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#757575',
     width: '65%',
     top: 30,
+  },
+  backButton: {
+    position: 'absolute',
+    width: 10,
+    height: 50,
+    top: 10,
+    left: 10,
+    zIndex: 10,
+  },
+  image0: {
+    position: 'absolute',
+    width: 40,
+    height: 40,
+    top: -430,
+    left: -190,
   },
   bgiconplus: {
     position: 'absolute',

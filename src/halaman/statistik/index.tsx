@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useRoute} from '@react-navigation/native';
 import {
   View,
   Text,
@@ -12,13 +13,13 @@ import {
   ImageBackground,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Atasan, Bawahan} from '../../Komponen/Molekul';
-
+import {createStaticNavigation, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // Data untuk contoh anggota
 const DUMMY_MEMBERS = [
   {
     id: '1',
-    name: 'Arline Abraham Timotius Namuliu',
+    name: 'Arlino Abraham Timotius Nanalis',
     age: 17,
     attendance: ['2023-04-01', '2023-04-08', '2023-04-15'],
   },
@@ -30,51 +31,81 @@ const DUMMY_MEMBERS = [
   },
   {
     id: '3',
-    name: 'Jay Joaquin Mentaelu',
+    name: 'Joy Joaquin Montolalu',
     age: 15,
     attendance: ['2023-04-01', '2023-04-08'],
   },
   {
     id: '4',
-    name: 'Christopher Timothy Cornelius',
+    name: 'Christopher Timothy Cornelisz',
     age: 14,
     attendance: ['2023-04-15'],
   },
   {
     id: '5',
-    name: 'Tesaya Efrat Muntu',
+    name: 'Yesaya Efrat Muntu',
     age: 14,
     attendance: ['2023-04-01', '2023-04-08', '2023-04-15'],
   },
-  {id: '6', name: 'Gabriella Quillerma', age: 13, attendance: ['2023-04-01']},
+  {id: '6', name: 'Gabriella Guillermo', age: 13, attendance: ['2023-04-01']},
   {
     id: '7',
-    name: 'Sherline Takarapatang',
+    name: 'Sherina Takarapateng',
     age: 13,
     attendance: ['2023-04-08', '2023-04-15'],
   },
   {
     id: '8',
-    name: 'Michelle Eunika Militta Samah',
+    name: 'Michelle Eunika Militia Samah',
     age: 13,
     attendance: ['2023-04-01', '2023-04-15'],
   },
   {
     id: '9',
-    name: 'Timothy Terah',
+    name: 'Timothy Toreh',
     age: 12,
     attendance: ['2023-04-01', '2023-04-08'],
   },
   {
     id: '10',
-    name: 'Syalom Terah',
+    name: 'Syalom Toreh',
     age: 12,
     attendance: ['2023-04-08', '2023-04-15'],
   },
   {id: '11', name: 'Charly Mamuntu', age: 12, attendance: ['2023-04-01']},
 ];
 
-const App = () => {
+type StatistikProps = {
+  route: {
+    params: {
+      nama: string;
+      tanggalLahir: string;
+    };
+  };
+};
+
+const Statistik = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { nama, tanggalLahir } = route.params;
+  const age = calculateAge(tanggalLahir);
+
+  const calculateAge = (tanggalLahirString: string): number => {
+    const tanggalLahir = new Date(tanggalLahirString);
+    const today = new Date();
+  
+    let age = today.getFullYear() - tanggalLahir.getFullYear();
+    const m = today.getMonth() - tanggalLahir.getMonth();
+  
+    if (m < 0 || (m === 0 && today.getDate() < tanggalLahir.getDate())) {
+      age--;
+    }
+  
+    return age;
+  };
+
+  const age = calculateAge(tanggalLahir);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMembers, setFilteredMembers] = useState(DUMMY_MEMBERS);
   const [selectedMember, setSelectedMember] = useState(null);
@@ -119,13 +150,15 @@ const App = () => {
         colors={['rgba(45, 50, 89, 0.9)', 'rgba(255, 255, 255, 0.8)']}
         style={styles.container}>
         <Image
-          source={require('../../assets/ikon/Panahkembali.png')}
-          style={styles.image0}
-        />
-        <Image
           source={require('../../assets/gambar/Rectangle11.png')}
           style={styles.image}
         />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image
+            source={require('../../assets/ikon/Panahkembali.png')}
+            style={styles.image0}
+          />
+        </TouchableOpacity>
         <Text style={styles.judul}>ABSENSI REMAJA & PEMBINA</Text>
         <View style={styles.logoContainer}>
           <Image
@@ -416,4 +449,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Statistik;

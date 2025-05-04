@@ -1,4 +1,5 @@
 import React from 'react';
+import {useRoute} from '@react-navigation/native';
 import {
   View,
   Text,
@@ -7,7 +8,9 @@ import {
   Image,
   ImageBackground,
 } from 'react-native';
-import { Atasan, Bawahan } from '../../../Komponen/Molekul';
+import {Atasan, Bawahan} from '../../../Komponen/Molekul';
+import {createStaticNavigation, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Static image map for local assets
 const iconMap: Record<string, any> = {
@@ -17,21 +20,38 @@ const iconMap: Record<string, any> = {
 };
 
 const RemajaDashboard: React.FC = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { nama, tanggalLahir, kolom, status } = route.params; 
+
+  console.log('Dari params:', nama, tanggalLahir, kolom, status);
+
   const menuItems = [
     {
       icon: 'personal',
       label: 'Informasi Pribadi',
-      onPress: () => console.log('Informasi Pribadi'),
+      onPress: () => {
+        navigation.navigate('Main Profile', {
+          nama,
+          tanggalLahir,
+          kolom,
+          status,
+        });
+      },
     },
     {
       icon: 'jadwal',
       label: 'Jadwal Ibadah',
-      onPress: () => console.log('Jadwal Ibadah'),
+      onPress: () => {
+        navigation.navigate('Jadwal Ibadah', { nama });
+      },
     },
     {
       icon: 'logout',
       label: 'Log Out',
-      onPress: () => console.log('Log Out'),
+      onPress: () => {
+        navigation.navigate('Entrance');
+      },
     },
   ];
 
@@ -39,18 +59,15 @@ const RemajaDashboard: React.FC = () => {
     <View style={styles.container}>
       <ImageBackground
         source={require('../../../assets/gambar/bg.png')}
-        style={styles.backgroundImage}
-      >
+        style={styles.backgroundImage}>
+        <Atasan label="Remaja Baitel Kema" top={45} left={40} fontSize={35} />
         <View style={styles.overlay}>
-          <Atasan label="DASHBOARD" subtitle="Remaja" />
-
           <View style={styles.gridContainer}>
             {menuItems.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.menuItem}
-                onPress={item.onPress}
-              >
+                onPress={item.onPress}>
                 <View style={styles.logoContainer}>
                   <Image
                     source={iconMap[item.icon]}
@@ -62,10 +79,9 @@ const RemajaDashboard: React.FC = () => {
               </TouchableOpacity>
             ))}
           </View>
-
-          <View style={styles.footerContainer}>
-            <Bawahan />
-          </View>
+        </View>
+        <View style={styles.footerContainer}>
+          <Bawahan />
         </View>
       </ImageBackground>
     </View>
@@ -83,13 +99,12 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
   },
-overlay: {
-  height: '25%', // Only cover top 25%
-  backgroundColor: '#001F54', // Navy color
-  paddingHorizontal: 20,
-  paddingTop: 60,
-  justifyContent: 'space-between',
-},
+  overlay: {
+    height: '25%', // Only cover top 25%// Navy color
+    paddingHorizontal: 30,
+    paddingTop: 100,
+    justifyContent: 'space-between',
+  },
 
   gridContainer: {
     flexDirection: 'row',
@@ -105,7 +120,7 @@ overlay: {
     alignItems: 'center',
     paddingVertical: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 4,
@@ -127,6 +142,6 @@ overlay: {
   },
   footerContainer: {
     alignItems: 'center',
-    marginBottom: 20,
+    top: 235,
   },
 });

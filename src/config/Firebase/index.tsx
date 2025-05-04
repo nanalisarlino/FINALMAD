@@ -13,7 +13,8 @@ const firebaseConfig = {
   storageBucket: "sistem-absensi-rgk.firebasestorage.app",
   messagingSenderId: "1041978782639",
   appId: "1:1041978782639:web:bc10d9aed6e661666cb55a",
-  measurementId: "G-EDCY83BD1F"
+  measurementId: "G-EDCY83BD1F",
+  databaseURL: "https://sistem-absensi-rgk-default-rtdb.firebaseio.com/",
 };
 
 // Initialize Firebase

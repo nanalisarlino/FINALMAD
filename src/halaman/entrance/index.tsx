@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { Button } from '../../Komponen/Atom';
-import { Bawahan } from '../../Komponen/Molekul';
+import {View, Text, StyleSheet, Image} from 'react-native';
+import {Button} from '../../Komponen/Atom';
+import {Bawahan} from '../../Komponen/Molekul';
+import {createStaticNavigation, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Entrance: React.FC = () => {
+const Entrance: React.FC = ({}) => {
+  const navigation = useNavigation();
   const handleMasuk = () => {
     console.log('Masuk clicked');
   };
@@ -34,9 +37,16 @@ const Entrance: React.FC = () => {
         <View style={styles.textAndButtons}>
           <Text style={styles.shallom}>SHALLOM!</Text>
           <View style={styles.buttonsContainer}>
-            <Button title="Masuk" onPress={handleMasuk} />
-            <View style={{ width: 12 }} />
-            <Button title="Daftar" onPress={handleDaftar} />
+            <Button
+              title="Masuk"
+              onPress={() => navigation.navigate('Sign In')}
+              width={200}
+            />
+            <Button
+              width={200}
+              title="Daftar"
+              onPress={() => navigation.navigate('Pilih')}
+            />
           </View>
         </View>
         <Image
@@ -72,7 +82,7 @@ const styles = StyleSheet.create({
     height: '15%',
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
     zIndex: 2,
-  },  
+  },
   gradientImage: {
     width: '100%',
     height: '25%',
@@ -84,7 +94,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     zIndex: 2,
-  },  
+  },
   title: {
     fontSize: 18,
     fontWeight: '600',
@@ -102,30 +112,32 @@ const styles = StyleSheet.create({
   },
   textAndButtons: {
     alignItems: 'flex-end',
-    marginRight: 16,
+    marginRight: 50,
+    top: 40,
   },
   shallom: {
-    fontSize: 25,
+    fontSize: 60,
     color: 'white',
     fontWeight: '500',
     fontFamily: 'SedanSC-Regular',
-    left: 140,
-    marginBottom: 12,
+    left: 190,
+    color: '#2d3250',
   },
   buttonsContainer: {
-    flexDirection: 'row',
-    left: 170,
+    flexDirection: 'column',
+    left: 200,
   },
   footerContainer: {
     position: 'absolute',
-    top: 280,
+    top: 465,
     width: '100%',
     alignItems: 'center',
   },
   logo: {
     width: 155,
     height: 167,
-    left: -180,
+    left: -200,
+    top: 70,
     resizeMode: 'contain',
   },
 });

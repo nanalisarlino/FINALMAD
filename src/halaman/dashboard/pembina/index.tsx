@@ -1,4 +1,5 @@
 import React from 'react';
+import {useRoute} from '@react-navigation/native';
 import {
   View,
   Text,
@@ -7,7 +8,9 @@ import {
   Image,
   ImageBackground,
 } from 'react-native';
-import { Atasan, Bawahan } from '../../../Komponen/Molekul';
+import {Atasan, Bawahan} from '../../../Komponen/Molekul';
+import {createStaticNavigation, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Static image map for local assets
 const iconMap: Record<string, any> = {
@@ -18,26 +21,48 @@ const iconMap: Record<string, any> = {
 };
 
 const PembinaDashboard: React.FC = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { nama, tanggalLahir, kolom, status } = route.params;
+
+  console.log('Dari params:', nama, tanggalLahir, kolom, status);
+
   const menuItems = [
     {
       icon: 'Statistik',
       label: 'Statistik Kehadiran',
-      onPress: () => console.log('Statistik Kehadiran'),
+      onPress: () => {
+        console.log('Statistik Kehadiran');
+        navigation.navigate('Statistik', { nama, tanggalLahir });
+      },
     },
     {
       icon: 'personal',
       label: 'Informasi Pribadi',
-      onPress: () => console.log('Informasi Pribadi'),
-    },
+      onPress: () => {
+        console.log('Informasi Pribadi');
+        navigation.navigate('Main Profile', {
+          nama,
+          tanggalLahir,
+          kolom,
+          status,
+        });
+      },
     {
       icon: 'jadwal',
       label: 'Jadwal Ibadah',
-      onPress: () => console.log('Jadwal Ibadah'),
+      onPress: () => {
+        console.log('Jadwal Ibadah');
+        navigation.navigate('Jadwal Ibadah', { nama });
+      },
     },
     {
       icon: 'logout',
       label: 'Log Out',
-      onPress: () => console.log('Log Out'),
+      onPress: () => {
+        console.log('Log Out');
+        navigation.navigate('Entrance');
+      },
     },
   ];
 
@@ -45,18 +70,15 @@ const PembinaDashboard: React.FC = () => {
     <View style={styles.container}>
       <ImageBackground
         source={require('../../../assets/gambar/bg.png')}
-        style={styles.backgroundImage}
-      >
+        style={styles.backgroundImage}>
+        <Atasan label="Remaja Baitel Kema" top={45} left={40} fontSize={35} />
         <View style={styles.overlay}>
-          <Atasan label="DASHBOARD" subtitle="Pembina" />
-
           <View style={styles.gridContainer}>
             {menuItems.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.menuItem}
-                onPress={item.onPress}
-              >
+                onPress={item.onPress}>
                 <View style={styles.logoContainer}>
                   <Image
                     source={iconMap[item.icon]}
@@ -68,10 +90,9 @@ const PembinaDashboard: React.FC = () => {
               </TouchableOpacity>
             ))}
           </View>
-
-          <View style={styles.footerContainer}>
-            <Bawahan />
-          </View>
+        </View>
+        <View style={styles.footerContainer}>
+          <Bawahan />
         </View>
       </ImageBackground>
     </View>
@@ -86,60 +107,40 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(45, 50, 89, 0.5)',
   },
   backgroundImage: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    width: '100%',
-    height: '100%',
+    flex: 1,
     resizeMode: 'cover',
-    zIndex: 1,
   },
   overlay: {
-    height: '25%', // Only cover top 25%
-    backgroundColor: 'rgba(45, 50, 89, 0.5)',
-    paddingHorizontal: 20,
-    paddingTop: 60,
+    height: '25%', // Only cover top 25%// Navy color
+    paddingHorizontal: 30,
+    paddingTop: 100,
     justifyContent: 'space-between',
   },
-  
-  topOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '15%',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    zIndex: 2,
-  },
+
   gridContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center', 
-    columnGap: 30,
+    justifyContent: 'space-between',
+    marginTop: 30,
     rowGap: 20,
-    marginTop: 150,
-  },  
+  },
   menuItem: {
-    width: '40%',
+    width: '47%',
     backgroundColor: '#F5F5F5',
     borderRadius: 12,
     alignItems: 'center',
-    justifyContent: 'flex-start', // stack from top
     paddingVertical: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 4,
-    flexDirection: 'column', // ensure logo and text are stacked
-  },  
+  },
   logoContainer: {
     width: 50,
     height: 50,
-    marginBottom: 12, // gives space between logo and text
-  },  
+    marginBottom: 8,
+  },
   logo: {
     width: '100%',
     height: '100%',
@@ -149,12 +150,9 @@ const styles = StyleSheet.create({
     color: '#2D3250',
     textAlign: 'center',
     fontWeight: 'bold',
-    flexWrap: 'wrap',
-    maxWidth: '100%',
-    paddingVertical: 5,
-  },  
+  },
   footerContainer: {
     alignItems: 'center',
-    marginTop: 70,
+    top: 235,
   },
 });
